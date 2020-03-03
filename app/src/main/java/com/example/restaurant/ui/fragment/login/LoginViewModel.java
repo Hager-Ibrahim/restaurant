@@ -1,6 +1,4 @@
-package com.example.restaurant.ui.fragment;
-
-import android.content.Context;
+package com.example.restaurant.ui.fragment.login;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;

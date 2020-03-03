@@ -1,4 +1,4 @@
-package com.example.restaurant.ui.fragment;
+package com.example.restaurant.ui.fragment.login;
 
 import android.widget.Toast;
 

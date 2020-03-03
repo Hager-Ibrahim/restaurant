@@ -6,7 +6,7 @@ import com.example.restaurant.di.module.ApiModule;
 import com.example.restaurant.di.module.AppModule;
 import com.example.restaurant.di.module.NetModule;
 import com.example.restaurant.di.module.RepositoryModule;
-import com.example.restaurant.ui.fragment.LoginViewModel;
+import com.example.restaurant.ui.fragment.login.LoginViewModel;
 
 import javax.inject.Singleton;
 

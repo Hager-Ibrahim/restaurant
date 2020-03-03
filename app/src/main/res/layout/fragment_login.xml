@@ -9,7 +9,7 @@
 
         <variable
             name="loginFragment"
-            type="com.example.restaurant.ui.fragment.LoginFragment" />
+            type="com.example.restaurant.ui.fragment.login.LoginFragment" />
 
         <variable
             name="fragmentLoginBinding"
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        tools:context=".ui.fragment.LoginFragment">
+        tools:context=".ui.fragment.login.LoginFragment">
 
         <EditText
             android:id="@+id/emailEditText"
