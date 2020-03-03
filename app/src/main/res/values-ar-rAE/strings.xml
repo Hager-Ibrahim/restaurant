@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Restaurant</string>
+    <string name="login" translatable="false">تسجيل الدخول</string>
+    <string name="email">البريد الإلكترونى</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forget_password">هل نسيت كلمة المرور؟</string>
+    <string name="register">تسجيل</string>
+    <string name="login_button">دخول</string>
+</resources>
