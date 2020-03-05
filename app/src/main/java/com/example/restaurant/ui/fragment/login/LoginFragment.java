@@ -1,8 +1,10 @@
 package com.example.restaurant.ui.fragment.login;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,6 @@ import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-
 import com.example.restaurant.R;
 import com.example.restaurant.data.local.prefs.AppPreference;
 import com.example.restaurant.data.model.api.BasicResponse;
@@ -28,7 +29,10 @@ import static com.example.restaurant.utils.Constants.KEY_API_TOKEN;
 
 public class LoginFragment extends Fragment {
 
+    private static Login login;
     FragmentLoginBinding mBinding;
+    LoginViewModel modelView;
+    BroadcastReceiverImp broadcastReceiverImp;
 
 
     @Override
@@ -39,60 +43,51 @@ public class LoginFragment extends Fragment {
                 inflater, R.layout.fragment_login, container, false);
         View view = mBinding.getRoot();
 
-        //data binding
-        mBinding.setLogin(new Login());
-        mBinding.setLoginFragment(this);
-        mBinding.setFragmentLoginBinding(mBinding);
+        login = new Login();
 
+        //data binding
+        mBinding.setLogin(login);
+        mBinding.setLoginFragment(this);
+        //get an instance of our viewmodel and get things injected...
+        modelView = LoginViewModel.create(getActivity());
+        MyApplication.getAppComponent().inject(modelView);
+
+        // check internet
+        broadcastReceiverImp = new BroadcastReceiverImp();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        getContext().registerReceiver(broadcastReceiverImp, filter);
 
         return view;
     }
 
-    @BindingAdapter({"fragmentLoginBinding", "loginFragment"})
-    public static void sendLoginData(final View button,
-                                     final FragmentLoginBinding mBinding,
-                                     final LoginFragment loginFragment) {
+    public void onClick(View view ){
 
-        //get an instance of our viewmodel and get things injected...
-        final LoginViewModel modelView;
-        modelView = LoginViewModel.create(loginFragment.getActivity());
-        MyApplication.getAppComponent().inject(modelView);
+        // get mail and password
+        String mail = getLogin().email.get();
+        String password = getLogin().password.get();
 
-        // check internet
-        final BroadcastReceiverImp broadcastReceiverImp = new BroadcastReceiverImp();
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        button.getContext().registerReceiver(broadcastReceiverImp, filter);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                // get mail and password
-                String mail = mBinding.getLogin().email.get();
-                String password = mBinding.getLogin().password.get();
-
-                if (broadcastReceiverImp.isConnected()) {
-                    //Let's observe the result and update our UI upon changes
-                    modelView.getResult(mail,password ).observe(loginFragment.getActivity(), new Observer<BasicResponse<UserData>>() {
-                        @Override
-                        public void onChanged(BasicResponse<UserData> listResource) {
-                            AppPreference.SaveData(loginFragment.getActivity(),KEY_API_TOKEN,listResource.getData().getApiToken());
-                            //open Activity
-                            Intent openHomeActivity = new Intent(loginFragment.getContext(), HomeActivity.class);
-                            view.getContext().startActivity(openHomeActivity);
-
-                        }
-                    });
+        if (broadcastReceiverImp.isConnected()) {
+            //Let's observe the result and update our UI upon changes
+            modelView.getResult(mail,password, getLogin() ).observe(getActivity(), new Observer<BasicResponse<UserData>>() {
+                @Override
+                public void onChanged(BasicResponse<UserData> listResource) {
+                    AppPreference.SaveData(getActivity(),KEY_API_TOKEN,listResource.getData().getApiToken());
+                    //open Activity
+                    Intent openHomeActivity = new Intent(getContext(), HomeActivity.class);
+                    getContext().startActivity(openHomeActivity);
                 }
+            });
+        }
 
-                else {
-                    Toast.makeText(button.getContext(), "Disconnected", Toast.LENGTH_SHORT).show();
+        else {
+            Toast.makeText(getContext(), "Disconnected", Toast.LENGTH_SHORT).show();
+        }
 
-                }
-            }
-        });
     }
 
-
+    public static Login getLogin(){
+        return login;
+    }
 
     // minimize screen
     // remember me

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="login"
             type="com.example.restaurant.data.model.dataBinding.Login" />
@@ -12,8 +13,9 @@
             type="com.example.restaurant.ui.fragment.login.LoginFragment" />
 
         <variable
-            name="fragmentLoginBinding"
+            name="binding"
             type="com.example.restaurant.databinding.FragmentLoginBinding" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,16 +26,9 @@
 
         <EditText
             android:id="@+id/emailEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/white_rectengle"
-            android:ems="10"
+            style="@style/circleEditText"
             android:hint="@string/email"
             android:inputType="textPersonName"
-            android:padding="20dp"
             android:text="@={login.email}"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,15 +39,9 @@
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/white_rectengle"
-            android:ems="10"
+            style="@style/circleEditText"
             android:hint="@string/password"
-            android:inputType="textPersonName"
-            android:padding="20dp"
+            android:inputType="textPassword"
             android:text="@={login.password}"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,23 +51,23 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="354dp"
+            android:layout_height="73dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:background="@drawable/rectengle_gradient"
+            android:background="@drawable/rectengle_gradiant_rounded"
             android:padding="20dp"
             android:text="@string/login_button"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
-            app:fragmentLoginBinding="@{fragmentLoginBinding}"
+            android:onClick="@{(v)-> loginFragment.onClick(v)}"
+            android:visibility="@{login.hideProgress ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="0.17000002"
-            app:loginFragment="@{loginFragment}" />
+            app:layout_constraintVertical_bias="0.17000002" />
 
         <TextView
             android:id="@+id/textView"
@@ -140,5 +129,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button"
             app:layout_constraintVertical_bias="0.77" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{login.hideProgress ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,4 +7,8 @@
     <string name="forget_password">هل نسيت كلمة المرور؟</string>
     <string name="register">تسجيل</string>
     <string name="login_button">دخول</string>
+    <string name="home">الرئيسية</string>
+    <string name="setting">الاعدادات</string>
+    <string name="profile">الملف الشخصى</string>
+    <string name="order">الطلبات</string>
 </resources>

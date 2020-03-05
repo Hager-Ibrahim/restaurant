@@ -10,4 +10,8 @@
     <string name="register">Register</string>
     <string name="login_button">Login</string>
     <string name="splash_word">food</string>
+    <string name="home">home</string>
+    <string name="setting">Setting</string>
+    <string name="profile">Profile</string>
+    <string name="order">Orders</string>
 </resources>
