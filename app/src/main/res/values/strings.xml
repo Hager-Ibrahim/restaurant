@@ -14,4 +14,11 @@
     <string name="setting">Setting</string>
     <string name="profile">Profile</string>
     <string name="order">Orders</string>
+    <string name="email_instruction">Please enter yur email address below to receive an email instruction for resetting your password.</string>
+    <string name="send">send</string>
+    <string name="code">Code</string>
+    <string name="new_password">New password</string>
+    <string name="check_internet">Check your internet connection</string>
+    <string name="check_mail">Check your email to find the code</string>
+    <string name="reset_password">Reset Password</string>
 </resources>

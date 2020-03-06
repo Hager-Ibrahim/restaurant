@@ -1,26 +1,25 @@
 package com.example.restaurant.ui.fragment.login;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.databinding.BindingAdapter;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.restaurant.R;
 import com.example.restaurant.data.local.prefs.AppPreference;
 import com.example.restaurant.data.model.api.BasicResponse;
-import com.example.restaurant.data.model.api.UserData;
+import com.example.restaurant.data.model.api.userCycle.UserData;
 import com.example.restaurant.data.model.dataBinding.Login;
 import com.example.restaurant.databinding.FragmentLoginBinding;
 import com.example.restaurant.ui.activities.HomeActivity;
+import com.example.restaurant.ui.fragment.forgetPassword.ForgetPasswordFragment;
+import com.example.restaurant.utils.HelperMethod;
 import com.example.restaurant.utils.MyApplication;
 import com.example.restaurant.utils.BroadcastReceiverImp;
 
@@ -53,9 +52,7 @@ public class LoginFragment extends Fragment {
         MyApplication.getAppComponent().inject(modelView);
 
         // check internet
-        broadcastReceiverImp = new BroadcastReceiverImp();
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        getContext().registerReceiver(broadcastReceiverImp, filter);
+        broadcastReceiverImp = HelperMethod.getBroadcastReceiver(getContext());
 
         return view;
     }
@@ -80,14 +77,21 @@ public class LoginFragment extends Fragment {
         }
 
         else {
-            Toast.makeText(getContext(), "Disconnected", Toast.LENGTH_SHORT).show();
+            login.setHideProgress(false);
+            HelperMethod.showInfoToast(getContext(),getActivity().getResources().getString(R.string.check_internet));
         }
 
     }
 
+    public void forgetPassword(View view){
+        HelperMethod.openFragment((AppCompatActivity) getActivity(),
+                R.id.auth_fragment_container,
+                new ForgetPasswordFragment());
+    }
     public static Login getLogin(){
         return login;
     }
+
 
     // minimize screen
     // remember me

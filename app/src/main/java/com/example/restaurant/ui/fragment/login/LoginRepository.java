@@ -1,17 +1,12 @@
 package com.example.restaurant.ui.fragment.login;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.restaurant.data.model.api.BasicResponse;
-import com.example.restaurant.data.model.api.UserData;
+import com.example.restaurant.data.model.api.userCycle.UserData;
 import com.example.restaurant.data.model.dataBinding.Login;
 import com.example.restaurant.data.remote.RestaurantApi;
+import com.example.restaurant.utils.HelperMethod;
 
 import javax.inject.Inject;
 
@@ -42,17 +37,18 @@ public class LoginRepository {
                 if(response.body().getStatus() == 1){
                     login.setHideProgress(false);
                     mediator.setValue(response.body());
+                    HelperMethod.showSuccessToast(app.getBaseContext(),"Success!");
                 }
                 else{
                     login.setHideProgress(false);
-                    Toast.makeText(app.getBaseContext(),response.body().getMsg(), Toast.LENGTH_LONG).show();
+                    HelperMethod.showInfoToast(app.getBaseContext(),response.body().getMsg());
                 }
             }
 
             @Override
             public void onFailure(Call<BasicResponse<UserData>> call, Throwable t) {
                 login.setHideProgress(false);
-                Toast.makeText(app.getBaseContext(),t.getMessage(), Toast.LENGTH_LONG).show();
+                HelperMethod.showInfoToast(app.getBaseContext(),t.getMessage());
             }
         });
 

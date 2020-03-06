@@ -8,9 +8,10 @@ import androidx.databinding.library.baseAdapters.BR;
 public class Login extends BaseObservable{
     public final ObservableField<String> email =  new ObservableField<>("");
     public final ObservableField<String> password = new ObservableField<>("");
+    public final ObservableField<String> newPassword = new ObservableField<>("");
+
     public boolean hideProgress;
     public Login() {}
-
 
     public ObservableField<String> getEmail() {
         return email;
@@ -19,6 +20,11 @@ public class Login extends BaseObservable{
     public ObservableField<String> getPassword() {
         return password;
     }
+
+    public ObservableField<String> getNewPassword() {
+        return newPassword;
+    }
+
     @Bindable
     public boolean isHideProgress() {
         return hideProgress;

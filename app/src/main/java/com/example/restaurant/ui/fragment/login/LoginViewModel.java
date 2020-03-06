@@ -1,6 +1,5 @@
 package com.example.restaurant.ui.fragment.login;
 
-import androidx.databinding.Bindable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -8,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.restaurant.data.model.api.BasicResponse;
-import com.example.restaurant.data.model.api.UserData;
+import com.example.restaurant.data.model.api.userCycle.UserData;
 import com.example.restaurant.data.model.dataBinding.Login;
 
 import javax.inject.Inject;
@@ -32,9 +31,4 @@ public class LoginViewModel extends ViewModel {
         mutableLiveData = repository.getData(email, password, login );
         return mutableLiveData;
     }
-
-
-
-
-
 }

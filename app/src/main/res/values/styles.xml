@@ -7,9 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@android:color/white</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
     </style>
-
 
     <style name="circleEditText">
         <item name="android:layout_height">wrap_content</item>
@@ -23,4 +23,21 @@
         <item name="android:textAlignment">viewStart</item>
     </style>
 
+    <style name="title">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@drawable/rectengle_gradiant_rounded</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

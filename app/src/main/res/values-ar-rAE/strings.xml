@@ -11,4 +11,10 @@
     <string name="setting">الاعدادات</string>
     <string name="profile">الملف الشخصى</string>
     <string name="order">الطلبات</string>
+    <string name="email_instruction">قم بإدخال البريد الإلكترونى الخاص بك ستتلقى ايميل لاعادة ضبط كلمة المرور مرة أخرى.</string>
+    <string name="send">ارسال</string>
+    <string name="code">الكود</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="check_mail"> قم بفتح البريد الخاص بك لكى تحصل على الكود</string>
+    <string name="reset_password">ضبط كلمة السر</string>
 </resources>
