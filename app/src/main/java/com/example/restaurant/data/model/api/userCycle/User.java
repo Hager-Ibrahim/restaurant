@@ -1,6 +1,7 @@
 package com.example.restaurant.data.model.api.userCycle;
 
-import com.example.restaurant.data.model.api.userCycle.Region;
+import android.graphics.Region;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

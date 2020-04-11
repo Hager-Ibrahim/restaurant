@@ -17,4 +17,24 @@
     <string name="new_password">كلمة المرور الجديدة</string>
     <string name="check_mail"> قم بفتح البريد الخاص بك لكى تحصل على الكود</string>
     <string name="reset_password">ضبط كلمة السر</string>
+    <string name="register_restaurant">تسجيل مطعم</string>
+    <string name="restaurant_name">اسم المطعم</string>
+    <string name="delivery_time">مدة التوصيل</string>
+    <string name="next">متابعه</string>
+    <string name="contact_information">بيانات التواصل</string>
+    <string name="mobile">الموبايل</string>
+    <string name="whats">الواتس اب</string>
+    <string name="confirm_password">تاكيد كلمة المرور</string>
+    <string name="delivery_charge">رسوم التوصيل</string>
+    <string name="minimum_order">الحد الادنى للطلب</string>
+    <string name="category_name">اسم التصنيف</string>
+    <string name="my_categories">تصنيفاتى</string>
+    <string name="add_image">اضف صورة التصنيف</string>
+    <string name="choose_city">اختر المدينة</string>
+    <string name="choose_region">اختر المنطقة</string>
+    <string name="add_store_image">اضف صورة المتجر</string>
+    <string name="fill_fields">"اكمل جميع الخانات "</string>
+    <string name="tab_compeleted_order">طلبات سابقة</string>
+    <string name="tab_pending_orders">طلبات جديدة</string>
+    <string name="tab_current_orders">طلبات حالية</string>
 </resources>

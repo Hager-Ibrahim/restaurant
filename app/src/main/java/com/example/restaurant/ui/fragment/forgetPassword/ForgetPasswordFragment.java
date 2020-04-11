@@ -8,12 +8,13 @@ import androidx.lifecycle.Observer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+
 import com.example.restaurant.R;
-import com.example.restaurant.data.model.api.BasicResponse;
+import com.example.restaurant.data.model.api.general.BasicResponse;
 import com.example.restaurant.data.model.api.userCycle.ForgetPassword;
 import com.example.restaurant.data.model.dataBinding.Login;
 import com.example.restaurant.databinding.FragmentForgetPasswordBinding;
+import com.example.restaurant.ui.fragment.BaseFragment;
 import com.example.restaurant.ui.fragment.newPassword.ResetPasswordFragment;
 import com.example.restaurant.utils.BroadcastReceiverImp;
 import com.example.restaurant.utils.HelperMethod;
@@ -21,7 +22,7 @@ import com.example.restaurant.utils.MyApplication;
 
 import static com.example.restaurant.utils.Constants.KEY_CODE;
 
-public class ForgetPasswordFragment extends Fragment {
+public class ForgetPasswordFragment extends BaseFragment {
 
     BroadcastReceiverImp broadcastReceiverImp;
     FragmentForgetPasswordBinding mBinding;
@@ -42,15 +43,24 @@ public class ForgetPasswordFragment extends Fragment {
         mBinding.setLogin(login);
         mBinding.setForgetFragment(this);
 
-        // Show status bar
-        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setUpActivity();
 
-        broadcastReceiverImp = HelperMethod.getBroadcastReceiver(getContext());
+        // Show status bar
+        HelperMethod.showStatusBar(getActivity());
+
+        broadcastReceiverImp = HelperMethod.getDynamicBroadcastReceiver(getContext());
         //get an instance of our viewmodel and get things injected...
         modelView = ForgetViewModel.create(getActivity());
         MyApplication.getAppComponent().inject(modelView);
 
         return view;
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getContext().unregisterReceiver(broadcastReceiverImp);
     }
 
     public void onClick(View view){

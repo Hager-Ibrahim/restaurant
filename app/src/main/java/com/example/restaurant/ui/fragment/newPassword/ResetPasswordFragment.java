@@ -12,24 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.restaurant.R;
-import com.example.restaurant.data.local.prefs.AppPreference;
-import com.example.restaurant.data.model.api.BasicResponse;
-import com.example.restaurant.data.model.api.userCycle.UserData;
+import com.example.restaurant.data.model.api.general.BasicResponse;
 import com.example.restaurant.data.model.dataBinding.Login;
-import com.example.restaurant.databinding.FragmentForgetPasswordBinding;
-import com.example.restaurant.databinding.FragmentLoginBinding;
 import com.example.restaurant.databinding.FragmentResetPasswordBinding;
 import com.example.restaurant.ui.activities.HomeActivity;
-import com.example.restaurant.ui.fragment.login.LoginViewModel;
+import com.example.restaurant.ui.fragment.BaseFragment;
 import com.example.restaurant.utils.BroadcastReceiverImp;
 import com.example.restaurant.utils.HelperMethod;
 import com.example.restaurant.utils.MyApplication;
 
-import static com.example.restaurant.utils.Constants.KEY_API_TOKEN;
 import static com.example.restaurant.utils.Constants.KEY_CODE;
 
 
-public class ResetPasswordFragment extends Fragment {
+public class ResetPasswordFragment extends BaseFragment {
 
 
     FragmentResetPasswordBinding mBinding;
@@ -43,6 +38,7 @@ public class ResetPasswordFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_reset_password, container, false);
         View view = mBinding.getRoot();
+        setUpActivity();
 
         login = new Login();
         //data binding
@@ -53,7 +49,7 @@ public class ResetPasswordFragment extends Fragment {
         MyApplication.getAppComponent().inject(modelView);
 
         // check internet
-        broadcastReceiverImp = HelperMethod.getBroadcastReceiver(getContext());
+        broadcastReceiverImp = HelperMethod.getDynamicBroadcastReceiver(getContext());
 
         String code = getArguments().getString(KEY_CODE);
 

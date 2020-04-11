@@ -35,9 +35,16 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_marginStart">32dp</item>
         <item name="android:layout_marginEnd">32dp</item>
-        <item name="android:padding">20dp</item>
-        <item name="android:background">@drawable/rectengle_gradiant_rounded</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:background">@drawable/shape_rectengle_gradiant_rounded</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CustomFontStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/flat</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+
     </style>
 </resources>

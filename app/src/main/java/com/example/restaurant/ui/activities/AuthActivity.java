@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
-import android.view.WindowManager;
-
 import com.example.restaurant.R;
 import com.example.restaurant.databinding.ActivityAuthBinding;
-import com.example.restaurant.ui.fragment.splash.SplashFragment;
+import com.example.restaurant.ui.fragment.login.LoginFragment;
+import com.example.restaurant.ui.fragment.registerRestaurant.RegisterRestaurantFragment;
 import com.example.restaurant.utils.HelperMethod;
 
-public class AuthActivity extends AppCompatActivity {
+public class AuthActivity extends BaseActivity {
 
     ActivityAuthBinding mBinding;
 
@@ -19,15 +18,15 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_auth);
 
-
-        // transcript status bar
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // transparent status bar
+        HelperMethod.transparentStatusBar(this);
         // open home fragment as default
-        HelperMethod.openFragment(this,R.id.auth_fragment_container,new SplashFragment());
+        HelperMethod.openFragment(this,R.id.auth_fragment_container,new LoginFragment());
         // change language
         HelperMethod.changeLang(this,"ar");
-
     }
 }

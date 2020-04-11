@@ -1,4 +1,4 @@
-package com.example.restaurant.data.model.api;
+package com.example.restaurant.data.model.api.general;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

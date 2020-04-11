@@ -6,11 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.restaurant.data.model.api.BasicResponse;
-import com.example.restaurant.data.model.api.userCycle.UserData;
+import com.example.restaurant.data.model.api.general.BasicResponse;
 import com.example.restaurant.data.model.dataBinding.Login;
-import com.example.restaurant.ui.fragment.login.LoginRepository;
-import com.example.restaurant.ui.fragment.login.LoginViewModel;
 
 import javax.inject.Inject;
 

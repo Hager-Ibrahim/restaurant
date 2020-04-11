@@ -1,14 +1,10 @@
 package com.example.restaurant.ui.fragment.splash;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import com.example.restaurant.R;
 import com.example.restaurant.data.model.dataBinding.Splash;
 import com.example.restaurant.databinding.FragmentSplashBinding;
+import com.example.restaurant.ui.fragment.BaseFragment;
 import com.example.restaurant.ui.fragment.login.LoginFragment;
+import com.example.restaurant.utils.HelperMethod;
 
 
-public class SplashFragment extends Fragment {
+public class SplashFragment extends BaseFragment {
 
     FragmentSplashBinding mBinding;
 
@@ -46,15 +44,13 @@ public class SplashFragment extends Fragment {
     public static void setAnimation(final TextView view, boolean isAnimation) {
         if (isAnimation) {
 
-            Animation animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.splash_anim);
-            view.startAnimation(animation);
             // set handler with specific moments
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    ((AppCompatActivity) view.getContext()).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.auth_fragment_container,
-                                    new LoginFragment()).commit();
+                    HelperMethod.openFragment((AppCompatActivity) view.getContext(),
+                            R.id.auth_fragment_container,
+                            new LoginFragment());
                 }
             }, SPLASH_TIME);
         }

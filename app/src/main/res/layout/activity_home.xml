@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+       <variable name="homeActivity"
+           type="com.example.restaurant.ui.activities.HomeActivity"/>
+        <import
+            type="com.example.restaurant.R"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -13,6 +20,8 @@
         app:menu="@menu/bottom_navigation"
         app:itemIconTint="@color/bnv_tab_item_foreground"
         android:background="@android:color/white"
+        app:onNavigationItemSelected="@{homeActivity::onNavigationItemSelected}"
+        app:selectedItemPosition="@{R.id.nav_home}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -28,3 +37,4 @@
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

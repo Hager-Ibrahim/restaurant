@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
@@ -9,23 +10,55 @@
             />
 
     </data>
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rectangle_gradient"
+        android:background="@drawable/shape_rectangle_gradient"
         android:gravity="center"
         >
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:text="@{splash.splashWord}"
-            app:animation="@{splash.isAnimation}"
-            android:layout_height="wrap_content"
+            android:id="@+id/appCompatTextView"
             android:layout_width="wrap_content"
-            android:textSize="90sp"
-            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="@font/logo"
-            android:layout_gravity="center"/>
+            android:text="food"
+            android:textColor="@android:color/white"
+            android:textSize="120sp"
+            app:animation="@{splash.isAnimation}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.337" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/button3"
+            style="@style/button"
+            android:background="@drawable/shape_rectangle_white"
+            android:text="Sell Food"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+            app:layout_constraintVertical_bias="0.714" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/button"
+            android:background="@drawable/shape_rectangle_white"
+            android:text="Order Food"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+            app:layout_constraintVertical_bias="0.90999997" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

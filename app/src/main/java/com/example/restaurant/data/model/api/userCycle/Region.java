@@ -1,20 +1,25 @@
 package com.example.restaurant.data.model.api.userCycle;
 
-import com.example.restaurant.data.model.api.userCycle.City;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+import com.example.restaurant.data.model.api.general.DataConverter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class Region {
 
     @SerializedName("id")
     @Expose
+    @PrimaryKey
     private Integer id;
     @SerializedName("created_at")
     @Expose
-    private Object createdAt;
+    private String createdAt;
     @SerializedName("updated_at")
     @Expose
-    private Object updatedAt;
+    private String updatedAt;
     @SerializedName("name")
     @Expose
     private String name;
@@ -23,7 +28,12 @@ public class Region {
     private String cityId;
     @SerializedName("city")
     @Expose
-    private City city;
+    @TypeConverters(DataConverter.class)
+    private Region city;
+
+    public Region(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -33,19 +43,19 @@ public class Region {
         this.id = id;
     }
 
-    public Object getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Object createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Object getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Object updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -65,12 +75,11 @@ public class Region {
         this.cityId = cityId;
     }
 
-    public City getCity() {
+    public Region getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(Region city) {
         this.city = city;
     }
-
 }
